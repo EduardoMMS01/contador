@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  const [number, setNumber] = useState(0)
+  const [name, setName] = useState()
+
+  const addNum = () => {
+    setNumber((prev) => prev + 1)
+  }
+
+  const subNum = () => {
+    setNumber((prev) => prev - 1)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>{number}</p>
+      <button onClick={addNum}>Add</button>
+      <button onClick={subNum}>Sub</button>
+
+      <input type='text' placeholder='Digite seu nome' value={name || ""} onChange={(e) => setName(e.target.value)}></input>
     </div>
   );
 }
